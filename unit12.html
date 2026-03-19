@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>英語千字王 單元 12</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="topbar">
+      <div>
+        <h1 id="unitTitle">單元 12</h1>
+        <p id="unitSub">載入中…</p>
+      </div>
+      <div class="nav-row">
+        <a class="link-btn btn-secondary" href="index.html">首頁</a>
+        <a class="link-btn btn-purple" href="group11-15.html">回大單元 11-15</a>
+        <button class="btn btn-success" id="unlockAudioBtn">啟用語音</button>
+        <button class="btn btn-primary" id="testAudioBtn">測試聲音</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="mode-switch">
+      <button class="btn btn-success mode-btn active" id="studyModeBtn">學習模式</button>
+      <button class="btn btn-purple mode-btn" id="quizModeBtn">考試模式</button>
+    </div>
+    <div class="status" id="globalStatus">系統狀態載入中…</div>
+  </section>
+
+  <section class="unit-layout">
+    <div id="studySection">
+      <div class="flashcard">
+        <div class="card-top">
+          <div class="badge" id="studyBadge">-</div>
+          <div class="nav-row">
+            <button class="btn btn-secondary" id="studyPrevBtn">上一個</button>
+            <button class="btn btn-secondary" id="studyNextBtn">下一個</button>
+            <button class="btn btn-primary" id="studyAudioBtn">🔊 播放發音</button>
+          </div>
+        </div>
+        <div class="cn-word" id="studyCn">-</div>
+        <div class="en-word" id="studyEn">-</div>
+        <div class="word-note" id="studyNote">-</div>
+        <div class="study-actions">
+          <button class="btn btn-success" id="studyStartBtn">保持在學習模式</button>
+          <a class="link-btn btn-purple" href="group11-15.html">切回大單元</a>
+        </div>
+      </div>
+
+      <div class="panel table-wrap">
+        <h2 class="section-title">本單元單字表</h2>
+        <table class="word-table">
+          <thead>
+            <tr>
+              <th>編號</th>
+              <th>英文</th>
+              <th>中文</th>
+              <th>查看</th>
+              <th>發音</th>
+            </tr>
+          </thead>
+          <tbody id="studyTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="quizSection" class="hidden">
+      <div class="panel">
+        <h2 class="section-title">亂數考試</h2>
+        <div class="stats-grid">
+          <div class="stat"><div class="label">已答題數</div><div class="value" id="answeredCount">0</div></div>
+          <div class="stat"><div class="label">答對題數</div><div class="value" id="correctCount">0</div></div>
+          <div class="stat"><div class="label">正確率</div><div class="value" id="accuracy">0%</div></div>
+          <div class="stat"><div class="label">金鑰匙</div><div class="value" id="keyCount">0</div></div>
+          <div class="stat"><div class="label">進度</div><div class="value" id="stageCount">1 / 5</div></div>
+        </div>
+        <div class="key-bar" id="keyBar"></div>
+        <div class="status" id="quizProgress">-</div>
+      </div>
+
+      <div class="quiz-box">
+        <div class="card-top">
+          <div class="badge">編號 <span id="quizNo">-</span></div>
+          <div class="nav-row">
+            <button class="btn btn-success" id="startQuizBtn">開始考試</button>
+            <button class="btn btn-danger" id="restartQuizBtn">重新洗牌</button>
+          </div>
+        </div>
+        <div class="quiz-prompt" id="quizCn">按「開始考試」</div>
+        <div class="word-note" id="quizHint">題目會亂數排列。</div>
+        <input class="quiz-input" id="quizInput" type="text" placeholder="請輸入英文拼字">
+        <div class="quiz-actions">
+          <button class="btn btn-primary" id="submitQuizBtn">送出答案</button>
+          <button class="btn btn-secondary" id="nextQuizBtn">下一題</button>
+        </div>
+        <div class="message" id="quizMessage"></div>
+        <div class="footer-note">考試模式不顯示單字表；但你可以隨時切回學習模式。</div>
+      </div>
+
+      <div class="panel hidden" id="treasurePanel">
+        <h2 class="section-title">寶箱區</h2>
+        <div class="status" id="treasureStatus">完成 25 題後才會開啟。</div>
+        <div class="footer-note">規則：每累積答對 5 題，可開 1 個寶箱。現在還能開 <strong><span id="remainingKeys">0</span></strong> 個。</div>
+        <div class="chest-grid" id="chestGrid"></div>
+        <div class="reward-log hidden" id="rewardLog">
+          <strong>已開啟紀錄</strong>
+          <div id="rewardLogItems"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>window.UNIT_ID = "12";</script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
