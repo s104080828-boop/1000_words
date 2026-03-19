@@ -17,6 +17,7 @@
   let openedChests = [];
   let audioUnlocked = false;
   const audioCache = {};
+  function sfx(name){ const a = window.AdventureAudio; if(a && a[name]) a[name](); }
 
   const els = {
     unitTitle: document.getElementById('unitTitle'),
@@ -130,6 +131,7 @@
         window.speechSynthesis.speak(utt);
       }
     }catch(e){}
+    sfx('unlock');
     els.unlockAudioBtn.textContent = '語音已啟用';
   }
 
@@ -264,6 +266,7 @@
     chestRewards = shuffle(['3C 5分鐘','3C 5分鐘','3C 5分鐘','3C 10分鐘','3C 10分鐘']);
     openedChests = [];
     els.treasurePanel.classList.add('hidden');
+    sfx('playRestart');
     els.quizInput.value = '';
     clearMessage();
     switchMode('quiz');
@@ -313,11 +316,14 @@
       const prevKeys = Math.floor((correctCount()-1)/5);
       const nowKeys = keysEarned();
       let msg = `答對了！正確答案是 ${item.english}`;
+      sfx('playCorrect');
       if(nowKeys > prevKeys){
         msg += `。恭喜拿到第 ${nowKeys} 把金鑰匙。`;
+        sfx('playKey');
       }
       showMessage(msg, true);
     }else{
+      sfx('playWrong');
       showMessage(`這題答錯了。正確答案是 ${item.english}`, false);
     }
     renderQuiz();
@@ -367,6 +373,7 @@
       return;
     }
     openedChests.push(index);
+    sfx('playTreasure');
     els.treasureStatus.textContent = `寶箱 ${index+1} 開出了：${chestRewards[index]}`;
     renderChests();
   }
@@ -378,6 +385,7 @@
     els.quizModeBtn.classList.toggle('active', !isStudy);
     els.studySection.classList.toggle('hidden', !isStudy);
     els.quizSection.classList.toggle('hidden', isStudy);
+    sfx('playMode');
     if(isStudy){
       setStatus(`${unit.title} 目前在學習模式。單字按照原順序學習，右側單字表可直接點選與播放發音。`);
     }else{
