@@ -9,65 +9,75 @@
 <body>
 
 <div class="wrap">
-  
-<section class="hero hero-castle">
-  <div class="topbar">
-    <div>
-      <h1>英語千字王 40 單元冒險城堡</h1>
-      <p>從城門出發，沿著發光闖關路線，一關一關蒐集金鑰匙，最後打開大寶藏。</p>
-      <p>每個小單元都包含：<strong>順序學習</strong>、<strong>亂數考試</strong>、<strong>發音</strong>、<strong>答對 5 題拿 1 把金鑰匙</strong>、<strong>25 題完成後開寶箱</strong>。</p>
+  <section class="hero">
+    <div class="topbar">
+      <div>
+        <h1>英語千字王 40 單元互動學習</h1>
+        <p>已依你的要求做成方案 C：先進入「大單元」，再進入各自獨立的小單元。按鈕已放大，方便 iPhone / iPad 直接點選。</p>
+        <p>每個小單元都包含：<strong>順序學習</strong>、<strong>亂數考試</strong>、<strong>發音</strong>、<strong>答對 5 題拿 1 把金鑰匙</strong>、<strong>25 題完成後開寶箱</strong>。</p>
+      </div>
+      <div class="nav-row">
+        <button class="btn btn-primary" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">往下看大單元</button>
+      </div>
     </div>
-    <div class="nav-row">
-      <button class="btn btn-success" id="heroUnlockBtn" type="button">🎼 啟動冒險音樂</button>
-      <button class="btn btn-primary" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">往下選大單元</button>
+  </section>
+
+  <section class="panel">
+    <h2 class="section-title">請先選擇大單元</h2>
+    <div class="grid group-grid">
+      
+    <a class="big-group-btn" href="group01-05.html">
+      <div class="kicker">大單元</div>
+      <div class="title">01-05</div>
+      <div class="sub">小單元 01-05 • 編號 1-125</div>
+    </a>
+    
+    <a class="big-group-btn" href="group06-10.html">
+      <div class="kicker">大單元</div>
+      <div class="title">06-10</div>
+      <div class="sub">小單元 06-10 • 編號 126-250</div>
+    </a>
+    
+    <a class="big-group-btn" href="group11-15.html">
+      <div class="kicker">大單元</div>
+      <div class="title">11-15</div>
+      <div class="sub">小單元 11-15 • 編號 251-375</div>
+    </a>
+    
+    <a class="big-group-btn" href="group16-20.html">
+      <div class="kicker">大單元</div>
+      <div class="title">16-20</div>
+      <div class="sub">小單元 16-20 • 編號 376-500</div>
+    </a>
+    
+    <a class="big-group-btn" href="group21-25.html">
+      <div class="kicker">大單元</div>
+      <div class="title">21-25</div>
+      <div class="sub">小單元 21-25 • 編號 501-625</div>
+    </a>
+    
+    <a class="big-group-btn" href="group26-30.html">
+      <div class="kicker">大單元</div>
+      <div class="title">26-30</div>
+      <div class="sub">小單元 26-30 • 編號 626-750</div>
+    </a>
+    
+    <a class="big-group-btn" href="group31-35.html">
+      <div class="kicker">大單元</div>
+      <div class="title">31-35</div>
+      <div class="sub">小單元 31-35 • 編號 751-875</div>
+    </a>
+    
+    <a class="big-group-btn" href="group36-40.html">
+      <div class="kicker">大單元</div>
+      <div class="title">36-40</div>
+      <div class="sub">小單元 36-40 • 編號 876-1000</div>
+    </a>
+    
     </div>
-  </div>
-  <div class="hero-ribbon hero-ribbon-strong">
-    <span>🏰 城堡地圖首頁</span><span>🗺️ 闖關路線圖</span><span>💎 大寶藏動畫特效</span>
-  </div>
-</section>
-
-
-  
-<section class="panel map-panel">
-  <h2 class="section-title">城堡地圖首頁</h2>
-  <p class="map-sub">建議在 iPhone / iPad 先按一次 <strong>「啟動冒險音樂」</strong>，背景樂與闖關音效就會更穩定。</p>
-  <div class="castle-map" aria-label="英語千字王闖關地圖">
-    <svg class="castle-route" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M90,500 C180,360 240,280 350,300 C470,320 470,510 620,500 C760,490 750,300 900,270 C1020,245 1070,160 1110,90" />
-      <path class="glow" d="M90,500 C180,360 240,280 350,300 C470,320 470,510 620,500 C760,490 750,300 900,270 C1020,245 1070,160 1110,90" />
-    </svg>
-    <div class="route-start">🚪 起點城門</div>
-    <a class="map-castle c1" href="group01-05.html"><span class="icon">🏰</span><span class="label">01-05</span><span class="range">1-125</span></a>
-    <a class="map-castle c2" href="group06-10.html"><span class="icon">🏯</span><span class="label">06-10</span><span class="range">126-250</span></a>
-    <a class="map-castle c3" href="group11-15.html"><span class="icon">🏰</span><span class="label">11-15</span><span class="range">251-375</span></a>
-    <a class="map-castle c4" href="group16-20.html"><span class="icon">🏯</span><span class="label">16-20</span><span class="range">376-500</span></a>
-    <a class="map-castle c5" href="group21-25.html"><span class="icon">🏰</span><span class="label">21-25</span><span class="range">501-625</span></a>
-    <a class="map-castle c6" href="group26-30.html"><span class="icon">🏯</span><span class="label">26-30</span><span class="range">626-750</span></a>
-    <a class="map-castle c7" href="group31-35.html"><span class="icon">🏰</span><span class="label">31-35</span><span class="range">751-875</span></a>
-    <a class="map-castle c8" href="group36-40.html"><span class="icon">💎</span><span class="label">36-40</span><span class="range">876-1000</span></a>
-    <div class="treasure-hill">✨ 終點大寶藏山</div>
-  </div>
-</section>
-
-<section class="panel route-map-panel">
-  <h2 class="section-title">大單元快速入口</h2>
-  <div class="grid group-grid">
-    <a class="big-group-btn" href="group01-05.html"><div class="kicker">大單元</div><div class="title">01-05</div><div class="sub">小單元 01-05 • 編號 1-125</div></a>
-    <a class="big-group-btn" href="group06-10.html"><div class="kicker">大單元</div><div class="title">06-10</div><div class="sub">小單元 06-10 • 編號 126-250</div></a>
-    <a class="big-group-btn" href="group11-15.html"><div class="kicker">大單元</div><div class="title">11-15</div><div class="sub">小單元 11-15 • 編號 251-375</div></a>
-    <a class="big-group-btn" href="group16-20.html"><div class="kicker">大單元</div><div class="title">16-20</div><div class="sub">小單元 16-20 • 編號 376-500</div></a>
-    <a class="big-group-btn" href="group21-25.html"><div class="kicker">大單元</div><div class="title">21-25</div><div class="sub">小單元 21-25 • 編號 501-625</div></a>
-    <a class="big-group-btn" href="group26-30.html"><div class="kicker">大單元</div><div class="title">26-30</div><div class="sub">小單元 26-30 • 編號 626-750</div></a>
-    <a class="big-group-btn" href="group31-35.html"><div class="kicker">大單元</div><div class="title">31-35</div><div class="sub">小單元 31-35 • 編號 751-875</div></a>
-    <a class="big-group-btn" href="group36-40.html"><div class="kicker">大單元</div><div class="title">36-40</div><div class="sub">小單元 36-40 • 編號 876-1000</div></a>
-  </div>
-  <div class="footer-note">提示：06-10 這一組會依照數字順序排列，因此 10 會排在 9 的右方（寬螢幕 / iPad 橫向時）。</div>
-</section>
-
+    <div class="footer-note">提示：06-10 這一組會依照數字順序排列，因此 10 會排在 9 的右方（寬螢幕 / iPad 橫向時）。</div>
+  </section>
 </div>
 
-<script src="site-ui.js"></script>
-<script>document.addEventListener("DOMContentLoaded",function(){var b=document.getElementById("heroUnlockBtn"); if(b){b.addEventListener("click",function(){ if(window.AdventureAudio){ window.AdventureAudio.activateAdventureAudio(true); } });}});</script>
 </body>
 </html>

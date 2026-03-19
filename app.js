@@ -17,7 +17,6 @@
   let openedChests = [];
   let audioUnlocked = false;
   const audioCache = {};
-  function sfx(name){ const a = window.AdventureAudio; if(a && a[name]) a[name](); }
 
   const els = {
     unitTitle: document.getElementById('unitTitle'),
@@ -131,8 +130,7 @@
         window.speechSynthesis.speak(utt);
       }
     }catch(e){}
-    const adv = window.AdventureAudio; if(adv && adv.activateAdventureAudio){ adv.activateAdventureAudio(true); }
-    els.unlockAudioBtn.textContent = '語音 / 音樂已啟用';
+    els.unlockAudioBtn.textContent = '語音已啟用';
   }
 
   function speak(text){
@@ -182,50 +180,6 @@
       speak(query || english);
     }
   }
-
-
-function ensureTreasureModal(){
-  if(document.getElementById('bigTreasureModal')) return;
-  const modal = document.createElement('div');
-  modal.id = 'bigTreasureModal';
-  modal.className = 'big-treasure-modal hidden';
-  modal.innerHTML = `
-    <div class="big-treasure-backdrop" data-close-modal="1"></div>
-    <div class="big-treasure-card">
-      <div class="big-treasure-burst"></div>
-      <div class="big-treasure-icon">💎🏆💎</div>
-      <div class="big-treasure-title">找到大寶藏！</div>
-      <div class="big-treasure-sub" id="bigTreasureText">你今天的冒險收穫滿滿。</div>
-      <div class="big-treasure-stars">✨ ✨ ✨ ✨ ✨</div>
-      <div class="nav-row center-row">
-        <button class="btn btn-primary" id="closeTreasureModalBtn" type="button">太棒了</button>
-        <a class="link-btn btn-purple" href="index.html">回首頁</a>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(modal);
-  modal.addEventListener('click', (e)=>{
-    if(e.target.closest('[data-close-modal="1"]') || e.target.id === 'closeTreasureModalBtn'){
-      modal.classList.add('hidden');
-    }
-  });
-}
-
-function showBigTreasure(){
-  ensureTreasureModal();
-  const modal = document.getElementById('bigTreasureModal');
-  const text = document.getElementById('bigTreasureText');
-  if(text){
-    text.textContent = `本次共開出 ${openedChests.length} 個寶箱，得到：${openedChests.map(idx => chestRewards[idx]).join('、')}。`;
-  }
-  if(modal){
-    modal.classList.remove('hidden');
-    modal.classList.remove('treasure-pop');
-    void modal.offsetWidth;
-    modal.classList.add('treasure-pop');
-  }
-  sfx('playTreasure');
-}
 
   function renderStudyCard(){
     const item = items[studyIndex];
@@ -310,7 +264,6 @@ function showBigTreasure(){
     chestRewards = shuffle(['3C 5分鐘','3C 5分鐘','3C 5分鐘','3C 10分鐘','3C 10分鐘']);
     openedChests = [];
     els.treasurePanel.classList.add('hidden');
-    sfx('playRestart');
     els.quizInput.value = '';
     clearMessage();
     switchMode('quiz');
@@ -360,14 +313,11 @@ function showBigTreasure(){
       const prevKeys = Math.floor((correctCount()-1)/5);
       const nowKeys = keysEarned();
       let msg = `答對了！正確答案是 ${item.english}`;
-      sfx('playCorrect');
       if(nowKeys > prevKeys){
         msg += `。恭喜拿到第 ${nowKeys} 把金鑰匙。`;
-        sfx('playKey');
       }
       showMessage(msg, true);
     }else{
-      sfx('playWrong');
       showMessage(`這題答錯了。正確答案是 ${item.english}`, false);
     }
     renderQuiz();
@@ -417,14 +367,8 @@ function showBigTreasure(){
       return;
     }
     openedChests.push(index);
-    const chestEl = els.chestGrid.children[index];
-    if(chestEl){ chestEl.classList.add('opening'); setTimeout(()=>{ chestEl.classList.add('opened'); }, 220); }
-    sfx('playTreasure');
     els.treasureStatus.textContent = `寶箱 ${index+1} 開出了：${chestRewards[index]}`;
     renderChests();
-    if(keysRemaining() === 0){
-      setTimeout(showBigTreasure, 180);
-    }
   }
 
   function switchMode(nextMode){
@@ -434,7 +378,6 @@ function showBigTreasure(){
     els.quizModeBtn.classList.toggle('active', !isStudy);
     els.studySection.classList.toggle('hidden', !isStudy);
     els.quizSection.classList.toggle('hidden', isStudy);
-    sfx('playMode');
     if(isStudy){
       setStatus(`${unit.title} 目前在學習模式。單字按照原順序學習，右側單字表可直接點選與播放發音。`);
     }else{
@@ -445,7 +388,6 @@ function showBigTreasure(){
   function init(){
     els.unitTitle.textContent = `${unit.title}`;
     els.unitSub.textContent = `編號 ${unit.range} • iPhone / iPad 友善版 • 學習與考試分開`;
-    ensureTreasureModal();
     renderStudyCard();
     renderStudyTable();
     renderQuiz();
