@@ -9,17 +9,26 @@
 <body>
 
 <div class="wrap">
-  <section class="hero">
-    <div class="topbar">
-      <div>
-        <h1>大單元 31-35</h1>
-        <p>請選擇要進入的小單元。按鈕已放大，適合手機與平板直接點選。</p>
-      </div>
-      <div class="nav-row">
-        <a class="link-btn btn-secondary" href="index.html">回首頁</a>
+  
+<section class="hero hero-castle">
+  <div class="topbar">
+    <div>
+      <h1>大單元 31-35</h1>
+      <p>請選擇要進入的小單元。按鈕已放大，適合手機與平板直接點選。</p>
     </div>
+    <div class="nav-row">
+      <a class="link-btn btn-secondary" href="index.html">回首頁</a>
+      <button class="btn btn-success groupAudioBtn" type="button">🎼 啟動冒險音樂</button>
     </div>
-  </section>
+  </div>
+</section>
+
+  
+<section class="panel route-panel">
+  <h2 class="section-title">闖關路線圖</h2>
+  <div class="route-strip"><a class="route-stop" href="unit31.html"><span class="route-icon">🛡️</span><span class="route-label">31</span></a><a class="route-stop" href="unit32.html"><span class="route-icon">🛡️</span><span class="route-label">32</span></a><a class="route-stop" href="unit33.html"><span class="route-icon">🛡️</span><span class="route-label">33</span></a><a class="route-stop" href="unit34.html"><span class="route-icon">🛡️</span><span class="route-label">34</span></a><a class="route-stop" href="unit35.html"><span class="route-icon">🏁</span><span class="route-label">35</span></a></div>
+</section>
+
   <section class="panel">
     <h2 class="section-title">小單元選擇</h2>
     <div class="grid group-page-grid">
@@ -54,5 +63,6 @@
 </div>
 
 <script src="site-ui.js"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".groupAudioBtn").forEach(function(b){b.addEventListener("click",function(){ if(window.AdventureAudio){ window.AdventureAudio.activateAdventureAudio(true); } });});});</script>
 </body>
 </html>

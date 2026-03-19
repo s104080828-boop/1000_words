@@ -131,8 +131,8 @@
         window.speechSynthesis.speak(utt);
       }
     }catch(e){}
-    sfx('unlock');
-    els.unlockAudioBtn.textContent = '語音已啟用';
+    const adv = window.AdventureAudio; if(adv && adv.activateAdventureAudio){ adv.activateAdventureAudio(true); }
+    els.unlockAudioBtn.textContent = '語音 / 音樂已啟用';
   }
 
   function speak(text){
@@ -182,6 +182,50 @@
       speak(query || english);
     }
   }
+
+
+function ensureTreasureModal(){
+  if(document.getElementById('bigTreasureModal')) return;
+  const modal = document.createElement('div');
+  modal.id = 'bigTreasureModal';
+  modal.className = 'big-treasure-modal hidden';
+  modal.innerHTML = `
+    <div class="big-treasure-backdrop" data-close-modal="1"></div>
+    <div class="big-treasure-card">
+      <div class="big-treasure-burst"></div>
+      <div class="big-treasure-icon">💎🏆💎</div>
+      <div class="big-treasure-title">找到大寶藏！</div>
+      <div class="big-treasure-sub" id="bigTreasureText">你今天的冒險收穫滿滿。</div>
+      <div class="big-treasure-stars">✨ ✨ ✨ ✨ ✨</div>
+      <div class="nav-row center-row">
+        <button class="btn btn-primary" id="closeTreasureModalBtn" type="button">太棒了</button>
+        <a class="link-btn btn-purple" href="index.html">回首頁</a>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  modal.addEventListener('click', (e)=>{
+    if(e.target.closest('[data-close-modal="1"]') || e.target.id === 'closeTreasureModalBtn'){
+      modal.classList.add('hidden');
+    }
+  });
+}
+
+function showBigTreasure(){
+  ensureTreasureModal();
+  const modal = document.getElementById('bigTreasureModal');
+  const text = document.getElementById('bigTreasureText');
+  if(text){
+    text.textContent = `本次共開出 ${openedChests.length} 個寶箱，得到：${openedChests.map(idx => chestRewards[idx]).join('、')}。`;
+  }
+  if(modal){
+    modal.classList.remove('hidden');
+    modal.classList.remove('treasure-pop');
+    void modal.offsetWidth;
+    modal.classList.add('treasure-pop');
+  }
+  sfx('playTreasure');
+}
 
   function renderStudyCard(){
     const item = items[studyIndex];
@@ -373,9 +417,14 @@
       return;
     }
     openedChests.push(index);
+    const chestEl = els.chestGrid.children[index];
+    if(chestEl){ chestEl.classList.add('opening'); setTimeout(()=>{ chestEl.classList.add('opened'); }, 220); }
     sfx('playTreasure');
     els.treasureStatus.textContent = `寶箱 ${index+1} 開出了：${chestRewards[index]}`;
     renderChests();
+    if(keysRemaining() === 0){
+      setTimeout(showBigTreasure, 180);
+    }
   }
 
   function switchMode(nextMode){
@@ -396,6 +445,7 @@
   function init(){
     els.unitTitle.textContent = `${unit.title}`;
     els.unitSub.textContent = `編號 ${unit.range} • iPhone / iPad 友善版 • 學習與考試分開`;
+    ensureTreasureModal();
     renderStudyCard();
     renderStudyTable();
     renderQuiz();

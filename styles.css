@@ -246,3 +246,91 @@ body[data-theme]::before{
   .dock-btn{min-height:48px; font-size:14px}
   .adventure-dock{left:12px; right:12px; width:auto}
 }
+
+
+.hero-castle{position:relative}
+.hero-ribbon-strong span{background:linear-gradient(180deg,#fffef9,#fff0c8)}
+.map-panel,.route-map-panel,.route-panel{position:relative;overflow:hidden}
+.map-sub{font-weight:800;color:var(--muted);line-height:1.7}
+.castle-map{
+  position:relative; min-height:620px; margin-top:18px; border:4px solid var(--line); border-radius:32px;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--accent2) 28%, white) 0%, color-mix(in srgb, var(--bg1) 88%, white) 34%, color-mix(in srgb, var(--accent3) 24%, white) 100%);
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.castle-map::before{
+  content:"☁️   ☁️      ☁️"; position:absolute; top:18px; left:60px; font-size:34px; opacity:.55; letter-spacing:24px; animation:cloudDrift 20s linear infinite;
+}
+.castle-map::after{
+  content:"🌳    🌲      🌳   🌲"; position:absolute; bottom:16px; left:26px; right:26px; font-size:34px; opacity:.72; display:flex; justify-content:space-between;
+}
+.castle-route{position:absolute; inset:0; width:100%; height:100%}
+.castle-route path{fill:none; stroke:#7d5f2c; stroke-width:18; stroke-linecap:round; stroke-dasharray:16 18; opacity:.65}
+.castle-route path.glow{stroke:#fff7a8; stroke-width:10; opacity:.8; filter:drop-shadow(0 0 6px rgba(255,232,133,.6))}
+.route-start,.treasure-hill{
+  position:absolute; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.82); border:3px solid var(--line); font-weight:900; box-shadow:0 8px 20px rgba(0,0,0,.08)
+}
+.route-start{left:22px; bottom:66px}
+.treasure-hill{right:20px; top:28px}
+.map-castle{
+  position:absolute; width:140px; min-height:118px; border-radius:26px; border:4px solid var(--line); text-decoration:none; color:var(--text);
+  background:linear-gradient(180deg,#fff9ef,#ffe7b5); box-shadow:0 12px 24px rgba(0,0,0,.14); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-weight:900;
+  transition:transform .16s ease, box-shadow .16s ease;
+}
+.map-castle:hover{transform:translateY(-4px) scale(1.03)}
+.map-castle .icon{font-size:38px; line-height:1}
+.map-castle .label{font-size:26px}
+.map-castle .range{font-size:14px; color:var(--muted)}
+.map-castle.c1{left:90px; top:372px}
+.map-castle.c2{left:245px; top:230px}
+.map-castle.c3{left:395px; top:260px}
+.map-castle.c4{left:545px; top:360px}
+.map-castle.c5{left:695px; top:340px}
+.map-castle.c6{left:840px; top:205px}
+.map-castle.c7{left:980px; top:160px}
+.map-castle.c8{right:26px; top:42px; background:linear-gradient(180deg,#fff7da,#ffd45d)}
+.route-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:8px}
+.route-stop{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:94px;border-radius:24px;border:3px solid var(--line);text-decoration:none;color:var(--text);
+  background:linear-gradient(180deg,#fff,#f7f1ff);box-shadow:0 8px 18px rgba(0,0,0,.10);font-weight:900
+}
+.route-icon{font-size:28px}
+.route-label{font-size:22px}
+.chest.opening{animation:chestShake .4s ease}
+.chest.opened{box-shadow:0 0 0 6px rgba(255,230,120,.35), 0 16px 32px rgba(0,0,0,.12)}
+.big-treasure-modal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:20px}
+.big-treasure-backdrop{position:absolute;inset:0;background:rgba(28,20,11,.58);backdrop-filter:blur(4px)}
+.big-treasure-card{
+  position:relative; z-index:1; width:min(720px,92vw); padding:34px 22px 28px; border-radius:30px; border:4px solid var(--line); text-align:center;
+  background:linear-gradient(180deg,#fff8dd 0%,#ffe08b 50%,#fff5d1 100%); box-shadow:0 20px 60px rgba(0,0,0,.25); overflow:hidden
+}
+.big-treasure-burst{
+  position:absolute; inset:-20% -10% auto; height:260px; background:radial-gradient(circle at center, rgba(255,255,255,.96) 0 10%, rgba(255,241,147,.88) 11% 22%, transparent 23%),
+  conic-gradient(from 0deg, rgba(255,255,255,0) 0deg 14deg, rgba(255,244,179,.92) 14deg 22deg, rgba(255,255,255,0) 22deg 44deg, rgba(255,226,104,.72) 44deg 54deg, rgba(255,255,255,0) 54deg 72deg);
+  opacity:.75; animation:spinBurst 5s linear infinite;
+}
+.big-treasure-icon{position:relative;font-size:64px;line-height:1.1;animation:treasureFloat 1.8s ease-in-out infinite}
+.big-treasure-title{position:relative;font-size:clamp(34px,6vw,52px);font-weight:900;margin-top:10px}
+.big-treasure-sub{position:relative;font-size:18px;font-weight:800;line-height:1.8;margin-top:12px}
+.big-treasure-stars{position:relative;font-size:30px;letter-spacing:6px;margin:16px 0 10px;animation:starBlink 1.4s ease-in-out infinite}
+.center-row{justify-content:center}
+.dock-btn.is-on{background:linear-gradient(180deg,#fff7bf,#ffd469)}
+@keyframes cloudDrift{0%{transform:translateX(0)}50%{transform:translateX(18px)}100%{transform:translateX(0)}}
+@keyframes chestShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-3px) rotate(-2deg)}40%{transform:translateX(3px) rotate(2deg)}60%{transform:translateX(-3px) rotate(-1deg)}80%{transform:translateX(3px) rotate(1deg)}}
+@keyframes treasureFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.04)}}
+@keyframes spinBurst{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes starBlink{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+@keyframes modalPop{0%{transform:scale(.82);opacity:0}100%{transform:scale(1);opacity:1}}
+.big-treasure-modal.treasure-pop .big-treasure-card{animation:modalPop .28s ease-out}
+@media (max-width:980px){
+  .castle-map{min-height:980px}
+  .castle-route{display:none}
+  .map-castle{position:static;width:auto;min-height:112px;margin:0}
+  .castle-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:72px 16px 96px}
+  .route-start,.treasure-hill{position:static;justify-self:center;grid-column:1 / -1}
+  .map-castle.c1,.map-castle.c2,.map-castle.c3,.map-castle.c4,.map-castle.c5,.map-castle.c6,.map-castle.c7,.map-castle.c8{left:auto;right:auto;top:auto}
+}
+@media (max-width:760px){
+  .castle-map{grid-template-columns:1fr;min-height:auto}
+  .route-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .map-castle .label{font-size:22px}
+}
