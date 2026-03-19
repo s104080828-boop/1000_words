@@ -74,10 +74,7 @@ body::before{
 }
 .unit-tile .title{font-size:clamp(24px,3vw,32px);font-weight:900;line-height:1.1}
 .unit-tile .sub{font-size:14px;color:var(--muted);margin-top:8px}
-.unit-layout{display:block}
-#studySection{display:grid;grid-template-columns:minmax(320px,.92fr) minmax(360px,1.08fr);gap:18px;align-items:start}
-#studySection .table-wrap{margin-top:0;position:sticky;top:14px;max-height:calc(100vh - 32px);overflow:auto}
-#quizSection{width:100%}
+.unit-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
 .section-title{margin:0 0 14px;font-size:24px}
 .mode-switch{display:flex;gap:10px;flex-wrap:wrap}
 .mode-btn.active{outline:4px solid rgba(122,199,255,.35)}
@@ -142,10 +139,7 @@ body::before{
 .footer-note{color:var(--muted);font-size:13px;line-height:1.7;margin-top:12px}
 @media (max-width:1050px){
   .group-page-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-@media (max-width:900px){
-  #studySection{grid-template-columns:1fr}
-  #studySection .table-wrap{position:static;max-height:none;overflow:visible}
+  .unit-layout{grid-template-columns:1fr}
 }
 @media (max-width:760px){
   .group-grid{grid-template-columns:1fr}
